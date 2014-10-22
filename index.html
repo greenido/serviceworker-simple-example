@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <style>
+    #logger {
+      background: yellow;
+      padding: 1em;
+      border-radius: 0.5em;
+    }
+  </style>
+  <title>Service Worker Simple Example</title>
+</head>
+<body>
+
+  <button id="install">Install Service Worker</button>
+  <button id="reload">Reload page to see Service Worker in action</button>
+  <button id="uninstall">Uninstall Service Worker</button>
+
+  <hr>
+  <div  id="logger"></div>
+  <script>
+    function log(text) {
+      var el = document.createElement('div');
+      el.innerText = text;
+      document.getElementById('logger').appendChild(el);
+    }
+
+      install.addEventListener('click', function() {
+        log('About to try to install a Service Worker');
+        // scope defaults to "/*"
+        navigator.serviceWorker.register('sw1.js')
+          .then(function(serviceWorker) {
+            log('Successfully installed ServiceWorker');
+            window.ourServiceWorker = serviceWorker;
+          }, function(why) {
+            log('Failed to install:' + why);
+          });
+      });
+  
+      uninstall.addEventListener('click', function() {
+        log('About to try to uninstall a Service Worker');
+        window.ourServiceWorker.unregister('sw1.js')
+        //navigator.serviceWorker.unregister('sw1.js')
+          .then(function() {
+            log('Successfully uninstalled ServiceWorker');
+            delete window.ourServiceWorker;
+          }, function(why) {
+            log('Failed to uninstall'+why);
+          });
+      });
+
+      reload.addEventListener('click', function() {
+        window.location.reload();
+      });
+      
+    // var newsButton = document.getElementById('add-news');
+    // var news = document.getElementById('news');
+    // newsButton.addEventListener('click', function(evt) {
+    //   var div = document.createElement('div');
+    //   div.innerHTML = "New news - " + Math.random();
+    //   news.appendChild(div);
+    // });
+
+  </script>
+</body>
+</html>
