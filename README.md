@@ -1,6 +1,7 @@
 # Service Worker Simple Example
 
-How to try SW:
+## How to try this example
+
 1. Load the page.
 2. Click on the 'Install' button.
 3. Check the amazing yellow logger and see that you got your Service Worker ready (You are on Chrome canary, right?)
