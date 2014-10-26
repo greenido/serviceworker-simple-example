@@ -8,7 +8,8 @@
 4. Click on the 'Reload' button and #boom you got a new page that they Service work sent you.
 5. Click another 2,3 or 18 times on the reload and the new service worker page is the only one you get.
 
-Psst... if you wish to go back to #1 - just open chrome://serviceworker-internals/ and click on 'Unregister'
+###(!)Psst... 
+If you wish to go back to #1 - just open <b>chrome://serviceworker-internals/</b> and click on 'Unregister'
 
 
 ### Todo:
